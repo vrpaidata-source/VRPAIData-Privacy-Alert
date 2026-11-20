@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>VRPAIData Privacy Alert</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;padding:20px;
+ display:flex;align-items:center;justify-content:center;
+ background:linear-gradient(145deg,#101827,#164e63);
+ color:white;font-family:Arial,sans-serif;
+}
+.card{
+ max-width:480px;width:100%;padding:28px 20px;
+ text-align:center;background:#ffffff12;
+ border:1px solid #ffffff30;border-radius:22px;
+}
+.logo{color:#67e8f9;font-weight:bold;letter-spacing:2px}
+h1{font-size:28px}
+p{color:#dbeafe;line-height:1.8}
+.status{
+ background:#064e3b;color:#a7f3d0;
+ padding:15px;border-radius:12px;font-weight:bold;
+}
+.warning{
+ background:#78350f55;color:#fde68a;
+ padding:15px;border-radius:12px;
+ line-height:1.8;text-align:left;
+}
+a{
+ display:block;margin-top:20px;padding:15px;
+ background:#38bdf8;color:#082f49;
+ border-radius:12px;text-decoration:none;font-weight:bold;
+}
+</style>
+</head>
+<body>
+<div class="card">
+ <div class="logo">VRPAIData</div>
+ <h1>🛡️ PRIVACY ALERT</h1>
+ <div class="status">✓ QR LINK OPENED</div>
+
+ <p>தனியுரிமை விழிப்புணர்வு பக்கத்திற்கு வரவேற்கிறோம்.</p>
+
+ <p id="time"></p>
+
+ <div class="warning">
+  <b>முக்கிய குறிப்பு:</b><br>
+  இந்த QR Link திறக்கப்பட்டதை மட்டும் இந்த Demo காட்டுகிறது.
+  மற்றவரின் Camera-ஐ OFF செய்யவோ,
+  அவர்களின் Phone-ஐ கட்டுப்படுத்தவோ முடியாது.
+ </div>
+
+ <a href="./">HOME PAGE</a>
+</div>
+
+<script>
+document.getElementById("time").textContent =
+ "திறக்கப்பட்ட நேரம்: " + new Date().toLocaleString("ta-IN");
+</script>
+</body>
+</html>

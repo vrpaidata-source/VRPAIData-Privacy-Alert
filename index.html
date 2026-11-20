@@ -103,12 +103,21 @@ function copyLink(){
 placeholder="Your device token will appear here"
 style="width:100%;height:110px;overflow-wrap:anywhere"></textarea>
 
-<script type="module"> 
+
+<script type="module">
 import { initializeApp } from
 "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 
 import { getMessaging, getToken } from
 "https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging.js";
+
+import { getAuth, signInAnonymously } from
+"https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+import {
+  getFirestore, doc, setDoc, serverTimestamp
+} from
+"https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAA2NBV_0-EYjEIgOHsPNJB6YVTRez28mQ",
@@ -121,6 +130,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
 document.getElementById("enableAlert").onclick = async () => {
   const status = document.getElementById("tokenStatus");
@@ -140,7 +151,7 @@ document.getElementById("enableAlert").onclick = async () => {
     await navigator.serviceWorker.ready;
 
     if (!registration.active) {
-      throw new Error("Service Worker is not active yet. Reload and retry.");
+      throw new Error("Service Worker is not active. Reload and retry.");
     }
 
     const permission = await Notification.requestPermission();
@@ -156,14 +167,29 @@ document.getElementById("enableAlert").onclick = async () => {
       serviceWorkerRegistration: registration
     });
 
+    if (!token) {
+      throw new Error("FCM token was not generated");
+    }
+
+    status.textContent = "Saving Token...";
+
+    const userCredential = await signInAnonymously(auth);
+
+    await setDoc(
+      doc(db, "users", userCredential.user.uid),
+      {
+        fcmToken: token,
+        updatedAt: serverTimestamp()
+      }
+    );
+
     document.getElementById("fcmToken").value = token;
-    status.textContent = "Push Notification Token Created! ✓";
+    status.textContent = "Token Created & Saved Successfully! ✓";
 
   } catch (error) {
     status.textContent = "Error: " + error.message;
   }
 };
-
-</script>
-</body>
+</script></body>
 </html>
+

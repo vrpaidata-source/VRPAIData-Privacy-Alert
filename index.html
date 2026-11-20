@@ -1,1 +1,98 @@
 
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>VRPAIData Privacy Alert</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;padding:22px 15px;min-height:100vh;
+ font-family:Arial,sans-serif;color:white;
+ background:linear-gradient(145deg,#101827,#164e63);
+}
+.container{max-width:550px;margin:auto;text-align:center}
+.brand{color:#67e8f9;font-weight:bold;letter-spacing:2px}
+.card{
+ margin-top:25px;padding:25px 18px;
+ background:#ffffff12;border:1px solid #ffffff30;
+ border-radius:22px;
+}
+h1{font-size:29px;line-height:1.4}
+p{color:#dbeafe;line-height:1.8}
+.qr{
+ background:white;border-radius:15px;padding:15px;
+ width:250px;max-width:100%;margin:25px auto;
+}
+.qr img{width:100%;display:block}
+.link{
+ background:#0f172a;padding:13px;border-radius:10px;
+ overflow-wrap:anywhere;color:#67e8f9;font-size:13px;
+}
+button,a{
+ display:block;width:100%;padding:15px;margin-top:12px;
+ border:0;border-radius:12px;font-weight:bold;
+ text-decoration:none;font-size:15px;cursor:pointer;
+}
+.copy{background:#38bdf8;color:#082f49}
+.demo{background:#334155;color:white}
+.warning{
+ margin-top:22px;padding:15px;text-align:left;
+ border-left:4px solid #fbbf24;
+ background:#78350f44;border-radius:10px;
+ color:#fde68a;line-height:1.8;
+}
+.small{font-size:12px;color:#94a3b8}
+</style>
+</head>
+<body>
+<div class="container">
+ <div class="brand">VRPAIData</div>
+ <div class="card">
+  <p>🛡️ DIGITAL PRIVACY PROJECT</p>
+  <h1>PRIVACY ALERT</h1>
+  <p>உங்கள் தனியுரிமையை பாதுகாக்கும் விழிப்புணர்வு திட்டம்.</p>
+
+  <div class="qr">
+   <img
+    src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Fvrpaidata-source.github.io%2FVRPAIData-Privacy-Alert%2Fscan.html"
+    alt="Privacy Alert QR Code">
+  </div>
+
+  <p>இந்த QR Code-ஐ Scan செய்து Link திறக்கவும்.</p>
+
+  <div class="link" id="url">
+   https://vrpaidata-source.github.io/VRPAIData-Privacy-Alert/scan.html
+  </div>
+
+  <button class="copy" onclick="copyLink()">COPY QR LINK</button>
+  <a class="demo" href="scan.html">OPEN DEMO</a>
+
+  <div class="warning">
+   <b>⚠️ முக்கியமான தகவல்</b><br>
+   QR Code மட்டும் மற்றவரின் Camera-ஐ OFF செய்யவோ,
+   அவர்களின் Phone-ஐ கட்டுப்படுத்தவோ முடியாது.
+   QR Link திறக்கப்பட்டால் மட்டுமே Demo Page திறக்கும்.
+  </div>
+
+  <p class="small">
+   Remote Alert மற்றும் Vibration வசதிகள் அடுத்த கட்டத்தில்
+   Server மற்றும் Push Notification மூலம் உருவாக்கப்படும்.
+  </p>
+ </div>
+ <p class="small">© 2026 VRPAIData</p>
+</div>
+
+<script>
+function copyLink(){
+ const link="https://vrpaidata-source.github.io/VRPAIData-Privacy-Alert/scan.html";
+ navigator.clipboard.writeText(link)
+ .then(()=>alert("QR Link Copied Successfully!"))
+ .catch(()=>prompt("இந்த Link-ஐ Copy செய்யவும்:",link));
+}
+</script>
+</body>
+</html>
+
